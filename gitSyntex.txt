@@ -1,0 +1,36 @@
+<!---Basic Commands for the file system--!>
+
+# Create new folder
+mkdir
+# See the Present Working Directory
+pwd
+# See all the files and folders
+ls
+# See all the files and folders with hidden files
+ls -a
+# Change the directory to an existing folder of the current directory
+cd <folderName>
+# Go to the Super/previous folder of the current folder
+cd ..
+cd /..
+# Create a new file
+touch <fileName>
+# Open a file
+start <fileName>
+
+
+
+<!---Git Commands---!>
+[[WorkingDirectory--StagingArea--LocalRepository--RemoteRepository]]
+[[init---add---commit---push]]
+
+# Initialize git in the present working directory(pwd)
+git init
+# See the current status and changes of files
+git status
+# Discard the changes in working directory
+git restore <fileName>
+# Stage the untracked files
+git add <fileName>
+git add .
+#

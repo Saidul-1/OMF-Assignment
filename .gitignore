@@ -1,4 +1,1 @@
 .emv
-*.txt
-!test1.txt
-temp/
