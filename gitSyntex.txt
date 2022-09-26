@@ -1,0 +1,66 @@
+<!---Basic Commands for the file system--!>
+
+# Create new folder
+mkdir
+# See the Present Working Directory
+pwd
+# See all the files and folders
+ls
+# See all the files and folders with hidden files
+ls -a
+# Change the directory to an existing folder of the current directory
+cd <folderName>
+# Go to the Super/previous folder of the current folder
+cd ..
+cd /..
+# Create a new file
+touch <fileName>
+# Open a file
+start <fileName>
+
+
+
+<!---Git Commands---!>
+[[WorkingDirectory--StagingArea--LocalRepository--RemoteRepository]]
+[[init---add---commit---push]]
+
+# Initialize git in the present working directory(pwd)
+git init
+git init -b <branchName>
+# See the current status and changes of files
+git status
+# Discard the changes in working directory
+git restore <fileName>
+# Stage the untracked files
+git add <fileName>
+git add .
+#Skip tracking some files
+ Create a txt file named ".gitignore"
+ write the file names in separate line into the file which should be untracked
+ *.extension will skip all the files with ".extension" extension
+	!<fileName> can be used for ".extension" extension after the previous line
+# Unstage the staged files
+git restore --staged <fileName>
+# Commit files from staginh area to Local repository
+git commit -m "<Comments about the commit>"
+# See all the commits
+git log
+git log --oneline
+# Quite the log view
+q
+# See the changes made since last commit
+git diff HEAD^
+#See the changes of two different commit
+git diff <commit code 1> <commit code 2>
+# Set the HEAD to a different commit
+git checkout <commit number>
+# Again go to the master/latest commit
+git checkout <branchName e.g. master>
+
+<!---Push repository/commit into GitHub---!>
+#Link with remote github repository
+git remote add origin <https/ssh Remote_Url from the github repository page>
+# Verify if the repo linked
+git remote -v
+# Push the changes/commit which is selected as HEAD
+git push origin <branchName e.g. master>
