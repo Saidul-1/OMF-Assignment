@@ -66,3 +66,5 @@ git remote add origin <https/ssh Remote_Url from the github repository page>
 git remote -v
 # Push the changes/commit which is selected as HEAD
 git push origin <branchName e.g. master>
+# Replace commit1 by commit2
+git replace <commit1Number> <commit2Number>
