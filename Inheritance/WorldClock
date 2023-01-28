@@ -1,0 +1,49 @@
+/* 
+1. Implement a class Clock whose getHours and getMinutes methods return the current
+time at your location. (Call java.time.Instant.now().toString() or, if you are not using
+Java 8, new java.util.Date().toString() and extract the time from that string.) Also
+provide a getTime method that returns a string with the hours and minutes by calling
+the getHours and getMinutes methods. Provide a subclass WorldClock whose constructor
+accepts a time offset. For example, if you live in California, a new WorldClock(3) should
+show the time in New York, three time zones ahead. Which methods did you over-
+ride? (You should not override getTime.) 
+*/
+
+/*Clock Class*/
+public class Clock {
+    private int hour;
+    private int minute;
+    private String time = java.time.Instant.now().toString();
+    public int getHour() {
+        return Integer.parseInt(time.substring(11,13));
+    }
+    public int getMinute(){
+        return Integer.parseInt(time.substring(14,16));
+    }
+    public String getTime(){
+        return getHour()+":"+getMinute();
+    }
+}
+
+/* WorldClock SubClass */
+public class WorldClock extends Clock{
+    private int offset;
+    public WorldClock(int offset) {
+        this.offset = offset;
+    }
+    public int getHour(){
+        return super.getHour()+offset;
+    }
+}
+
+/* Main Class */
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Enter the time offset");
+        Scanner in = new Scanner(System.in);
+        WorldClock obj = new WorldClock(in.nextInt());
+        System.out.println("Current Time in your Area: " + obj.getTime());
+    }
+}
