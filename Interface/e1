@@ -1,0 +1,127 @@
+public interface Measurable
+{
+   double getMeasure();
+}
+
+
+public class Data
+{
+   /**
+      Computes the average of the measures of the given objects.
+      @param objects an array of Measurable objects
+      @return the average of the measures
+   */
+   public static double average(Measurable[] objects)
+   {
+      double sum = 0;
+      for (Measurable obj : objects)
+      {
+         sum = sum + obj.getMeasure();
+      }
+      if (objects.length > 0)
+      {
+         return sum / objects.length;
+      }
+      else
+      {
+         return 0;
+      }
+   }
+
+   /**
+      Computes the maximum of the measures of the given objects.
+      @param objects an array of Measurable objects
+      @return the maximum of the measures, null if array is empty
+   */
+   public static Measurable max(Measurable[] objects)
+   {
+      if (objects.length == 0)
+      {
+         return null;
+      }
+      Measurable max = objects[0];
+      for (Measurable obj : objects)
+      {
+         if (obj.getMeasure() > max.getMeasure())
+         {
+            max = obj;
+         }
+      }
+
+      return max;
+   }
+}
+
+/**
+   This class represents a quiz score and grade
+*/
+public class Quiz implements Measurable
+{
+   private double score;
+   private String grade;
+
+   /**
+      Constructs a quiz object
+      @param aScore the quiz score
+      @param aGrade the quiz grade
+   */
+   public Quiz(double aScore, String aGrade)
+   {
+      score = aScore;
+      grade = aGrade;
+   }
+
+   /**
+      Gets the quiz score
+      @return the quiz score
+   */
+   public double getScore()
+   {
+      return score;
+   }
+
+   /**
+      Gets the quiz grade
+      @return the quiz grade
+   */
+   public String getGrade()
+   {
+      return grade;
+   }
+
+   /**
+      Gets the quiz score for the Measureable interface
+      @return the quiz score
+   */
+   public double getMeasure()
+   {
+      return score;
+   }
+}
+
+
+/**
+   This program tests the Quiz and DataSet classes.
+*/
+public class QuizTester
+{
+   public static void main(String[] args)
+   {
+      Measurable quizData[] = new Measurable[3];
+      quizData[0] = new Quiz(89, "B+");
+      quizData[1] = new Quiz(90, "A-");
+      quizData[2] = new Quiz(73, "C");
+
+      double avg = Data.average(quizData);
+      Quiz max = (Quiz) Data.max(quizData);
+
+      System.out.println("Average score: " + avg);
+      System.out.println("Expected: 84.0");
+
+      System.out.println("Highest score: " + max.getScore());
+      System.out.println("Expected: 90.0");
+
+      System.out.println("Highest grade: " + max.getGrade());
+      System.out.println("Expected: A-");
+   }
+}
